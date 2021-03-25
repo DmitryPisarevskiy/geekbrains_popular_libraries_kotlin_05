@@ -18,6 +18,7 @@ import ru.geekbrains.geekbrains_popular_libraries_kotlin.ui.BackButtonListener
 import ru.geekbrains.geekbrains_popular_libraries_kotlin.ui.adapter.ReposRVAdapter
 import ru.geekbrains.geekbrains_popular_libraries_kotlin.ui.adapter.UsersRVAdapter
 import ru.geekbrains.geekbrains_popular_libraries_kotlin.ui.image.GlideImageLoader
+import ru.geekbrains.geekbrains_popular_libraries_kotlin.ui.navigation.AndroidScreens
 
 class UserFragment : MvpAppCompatFragment(), UserView, BackButtonListener {
 
@@ -37,6 +38,7 @@ class UserFragment : MvpAppCompatFragment(), UserView, BackButtonListener {
             AndroidSchedulers.mainThread(),
             RetrofitGithubUsersRepo(ApiHolder.api),
             App.instance.router,
+            AndroidScreens(),
             user
         )
     }

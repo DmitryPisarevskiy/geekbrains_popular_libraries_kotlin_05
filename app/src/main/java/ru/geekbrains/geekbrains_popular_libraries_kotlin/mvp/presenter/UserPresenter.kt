@@ -5,6 +5,7 @@ import io.reactivex.rxjava3.core.Scheduler
 import moxy.MvpPresenter
 import ru.geekbrains.geekbrains_popular_libraries_kotlin.mvp.model.entity.GithubUser
 import ru.geekbrains.geekbrains_popular_libraries_kotlin.mvp.model.entity.Repo
+import ru.geekbrains.geekbrains_popular_libraries_kotlin.mvp.model.navigation.IScreens
 import ru.geekbrains.geekbrains_popular_libraries_kotlin.mvp.model.repo.IGithubUsersRepo
 import ru.geekbrains.geekbrains_popular_libraries_kotlin.mvp.presenter.list.IRepoListPresenter
 import ru.geekbrains.geekbrains_popular_libraries_kotlin.mvp.view.UserView
@@ -14,6 +15,7 @@ class UserPresenter(
         val uiScheduler: Scheduler,
         val usersRepo: IGithubUsersRepo,
         val router: Router,
+        val screens: IScreens,
         val user: GithubUser
 ) : MvpPresenter<UserView>() {
 
@@ -44,6 +46,11 @@ class UserPresenter(
         }, {
             println("Error: ${it.message}")
         })
+
+        repoListPresenter.itemClickListener = { itemView ->
+            val repo = repoListPresenter.repos[itemView.pos]
+            router.navigateTo(screens.repo(repo))
+        }
     }
 
     fun backPressed(): Boolean {

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="single_margin">20dp</dimen>
+    <dimen name="middle_caption">15sp</dimen>
+    <dimen name="big_caption">25sp</dimen>
+    <dimen name="double_margin">50dp</dimen>
+</resources>
